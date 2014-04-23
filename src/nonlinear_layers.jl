@@ -26,7 +26,7 @@ type RectifiedLinearLayer
     inputActivation::Vol
     outputActivation::Vol
 
-    function SigmoidLayer(dimensions)
+    function RectifiedLinearLayer(dimensions)
         new(Vol(dimensions, 0.0), Vol(dimensions, 0.0))
     end
 end
