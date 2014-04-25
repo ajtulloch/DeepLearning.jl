@@ -4,9 +4,11 @@ import Base.size
 
 flatten(arr) = reshape(arr, length(arr))
 
+typealias Volume{T} Array{T, 3}
+
 type Vol
-    w::Array{Float64, 3}
-    dw::Array{Float64, 3}
+    w::Volume{Float64}
+    dw::Volume{Float64}
 
     function Vol(dimensions, value::Float64)
         w = Array(Float64, dimensions)

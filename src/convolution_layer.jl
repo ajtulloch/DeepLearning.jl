@@ -67,7 +67,7 @@ function backward(self::ConvolutionLayer)
     end
 end
 
-function gradientState(self::ConvolutionLayer)
+function gradientStates(self::ConvolutionLayer)
     grads = [GradientState(filter.w, filter.dw,  1.0, 1.0)
              for filter in self.filters]
     append!(grads, [GradientState(self.biases.w, self.biases.dw, 0.0, 0.0)])

@@ -33,3 +33,5 @@ function backward(self::MaxoutLayer)
         self.inputActivation.dw[x, y, maxinputIndex] = chainGrad
     end
 end
+
+gradientStates(self::MaxoutLayer) = []

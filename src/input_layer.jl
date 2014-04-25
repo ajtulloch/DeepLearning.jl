@@ -16,4 +16,4 @@ function backward(self::InputLayer)
     self.inputActivation.dw = copy(self.inputActivation.dw)
 end
 
-gradientState(self::InputLayer) = []
+gradientStates(self::InputLayer) = []
