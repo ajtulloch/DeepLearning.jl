@@ -26,10 +26,10 @@ function foward(self::ConvolutionLayer, inputActivation::Vol)
     for d in 1:length(self.filters)
         filter = self.filters[d]
         filterX, filterY, filterDepth = size(filters)
-        for ax in 1:outputX, ay in 1:outputY
+        for ay in 1:outputY, ax in 1:outputX
             x, y = (stride - 1) * ax - padding, (stride - 1) * ay - padding
             a = 0.0
-            for fx in 1:filterX, fy in 1:filterY, fd in 1:filterDepth
+            for fd in 1:filterDepth, fy in 1:filterY, fx in 1:filterX
                 ox = x + fx
                 oy = y + fy
                 if 1 <= ox <= inputX && 1 <= oy <= inputY && 1 <= fd <= inputDepth
@@ -51,10 +51,10 @@ function backward(self::ConvolutionLayer)
     for d in 1:length(self.filters)
         filter = self.filters[d]
         filterX, filterY, filterDepth = size(filters)
-        for ax in 1:outputX, ay in 1:outputY
+        for ay in 1:outputY, ax in 1:outputX
             x, y = (stride - 1) * ax - padding, (stride - 1) * ay - padding
             chainGrad = this.outputActivation.dw[ax, ay, d]
-            for fx in 1:filterX, fy in 1:filterY, fd in 1:filterDepth
+            for fd in 1:filterDepth, fy in 1:filterY, fx in 1:filterX
                 ox = x + fx
                 oy = y + fy
                 if 1 <= ox <= inputX && 1 <= oy <= inputY && 1 <= fd <= inputDepth

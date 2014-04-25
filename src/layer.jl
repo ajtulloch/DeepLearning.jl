@@ -10,4 +10,3 @@ outputSize(self::Layer) = size(self.outputActivation.w)
 inputSize(self::Layer) = size(self.inputActivation.w)
 
 using NumericExtensions
-

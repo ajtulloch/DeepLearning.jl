@@ -30,6 +30,6 @@ function backward(self::MaxoutLayer)
         chainGrad = self.outputActivation.dw[x, y, d]
         maxIndex = self.argmax[x, y, d]
         maxInputIndex = (d-1) * groupSize + maxIndex
-        self.inputActivation.dw[x, y, maxinputIndex]  = chainGrad
+        self.inputActivation.dw[x, y, maxinputIndex] = chainGrad
     end
 end
