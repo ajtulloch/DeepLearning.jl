@@ -11,7 +11,7 @@ end
 
 function forward(self::DropoutLayer, inputActivation::Vol)
     self.inputActivation = inputActivation
-    self.keptWeights = rand(size(self.inputActivation)) <. self.keepProbability
+    self.keptWeights = rand(size(self.inputActivation)) .< self.keepProbability
     self.outputActivation = self.inputActivation .* self.keptWeights
     return self.outputActivation
 end
