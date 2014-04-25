@@ -10,6 +10,7 @@ end
 function foward(self::InputLayer, inputActivation::Vol)
     self.outputActivation = copy(self.inputActivation)
     self.outputActivation.w = copy(self.inputActivation.w)
+    self.outputActivation.dw = copy(self.inputActivation.dw)
 end
 
 function backward(self::InputLayer)

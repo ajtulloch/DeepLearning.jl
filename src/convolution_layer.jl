@@ -43,7 +43,6 @@ function foward(self::ConvolutionLayer, inputActivation::Vol)
     return self.outputActivation
 end
 
-
 function backward(self::ConvolutionLayer)
     (inputX, inputY, inputDepth) = size(self.inputActivation)
     (outputX, outputY, numOutputs) = size(self.outputActivation)
@@ -68,8 +67,7 @@ function backward(self::ConvolutionLayer)
 end
 
 function gradientStates(self::ConvolutionLayer)
-    grads = [GradientState(filter.w, filter.dw,  1.0, 1.0)
-             for filter in self.filters]
+    grads = [GradientState(filter.w, filter.dw,  1.0, 1.0) for filter in self.filters]
     append!(grads, [GradientState(self.biases.w, self.biases.dw, 0.0, 0.0)])
     return grads
 end

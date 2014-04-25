@@ -38,7 +38,6 @@ function backward(self::DropConnectLayer)
     for i in 1:length(self.filters)
         filter = self.filters[i]
         chainGrad = self.outputActivation.dw[1, 1, i]
-
         self.inputActivation.dw += filter.w .* self.filterMasks[i] * chainGrad
         filter.dw += self.inputActivation.w .* self.filterMasks[i] * chainGrad
         self.biases.dw[1, 1, i] += chainGrad * self.biasMask[1, 1, i]
